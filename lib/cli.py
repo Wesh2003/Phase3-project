@@ -3,6 +3,7 @@ from sqlalchemy import create_engine
 from models import Library, Reader, Recommendations
 from sqlalchemy.orm import sessionmaker
 from datetime import date
+import time
 '''
 Put all functions here 
 '''
@@ -82,6 +83,13 @@ def starting_the_program():
             books = session.query(Library.title, Library.author, Library.description).all()
             click.echo(books)
         listing_all_books()
+        click.echo("-------------------\n")
+        click.echo("-------------------\n")
+        click.echo("-------Returning to main page------\n")
+        click.echo("-------------------\n")
+        click.echo("-------------------\n")
+        time.sleep(4)
+        starting_the_program()
     elif(option == "2"):
         def list_info_of_specific_book():
             book_name = input("Enter name of book to find:\n")
@@ -91,6 +99,13 @@ def starting_the_program():
             else:
                 click.echo(f"No book with the title '{book.title}' was found.")
         list_info_of_specific_book()
+        click.echo("-------------------\n")
+        click.echo("-------------------\n")
+        click.echo("-------Returning to main page------\n")
+        click.echo("-------------------\n")
+        click.echo("-------------------\n")
+        time.sleep(4)
+        starting_the_program()
     elif(option == "3"):
         def adding_new_book_to_library():
             name = input("Enter title of the book you want to be added: \n")
@@ -100,18 +115,39 @@ def starting_the_program():
             session.add(book)
             session.commit()
         adding_new_book_to_library()
+        click.echo("-------------------\n")
+        click.echo("-------------------\n")
+        click.echo("-------Returning to main page------\n")
+        click.echo("-------------------\n")
+        click.echo("-------------------\n")
+        time.sleep(4)
+        starting_the_program()
     elif(option == "4"):
         def updating_book_info_in_library():
             name = input("Enter book title of the book you want updated: \n")
             book = session.query(Library).filter(Library.title == name).first()
             if book is None:
                 click.echo("No such book.")
+                click.echo("-------------------\n")
+                click.echo("-------------------\n")
+                click.echo("-------Returning to main page------\n")
+                click.echo("-------------------\n")
+                click.echo("-------------------\n")
+                time.sleep(4)
+                starting_the_program()
             else:
                 new_description = input("Enter a new description of this book:\n").strip()
                 book.description = new_description
                 session.commit()
                 click.echo("The information has been updated.")
         updating_book_info_in_library()
+        click.echo("-------------------\n")
+        click.echo("-------------------\n")
+        click.echo("-------Returning to main page------\n")
+        click.echo("-------------------\n")
+        click.echo("-------------------\n")
+        time.sleep(4)
+        starting_the_program()
     elif(option == "5"):
         def deleting_a_book_from_the_library():
             name = input("Enter book title of the book you want deleted: \n")
@@ -120,6 +156,13 @@ def starting_the_program():
             session.commit()
             click.echo("Book deleted from library.")
         deleting_a_book_from_the_library()
+        click.echo("-------------------\n")
+        click.echo("-------------------\n")
+        click.echo("-------Returning to main page------\n")
+        click.echo("-------------------\n")
+        click.echo("-------------------\n")
+        time.sleep(4)
+        starting_the_program()
     elif(option == "6"):
         def add_new_reader():
             first_name = input("\nPlease enter your first name:\n")
@@ -128,24 +171,53 @@ def starting_the_program():
             new_reader = Reader(first_name = first_name, last_name = last_name, gender = gender)
             session.add(new_reader)
             session.commit()
+            click.echo("New reader added")
         add_new_reader()
+        click.echo("-------------------\n")
+        click.echo("-------------------\n")
+        click.echo("-------Returning to main page------\n")
+        click.echo("-------------------\n")
+        click.echo("-------------------\n")
+        time.sleep(4)
+        starting_the_program()
     elif(option == "7"):
         def listing_all_readers():
             readers = session.query(Reader).all()
             click.echo(readers)
         listing_all_readers()
+        click.echo("-------------------\n")
+        click.echo("-------------------\n")
+        click.echo("-------Returning to main page------\n")
+        click.echo("-------------------\n")
+        click.echo("-------------------\n")
+        time.sleep(4)
+        starting_the_program()
     elif(option == "8"):
         def updating_reader_info_in_reader_list():
             name = input("Enter first name of the reader whose information is to be updated:\n")
             reader = session.query(Reader).filter(Reader.first_name == name).first()
             if reader is None:
                 click.echo("No such reader exists.")
+                click.echo("-------------------\n")
+                click.echo("-------------------\n")
+                click.echo("-------Returning to main page------\n")
+                click.echo("-------------------\n")
+                click.echo("-------------------\n")
+                time.sleep(4)
+                starting_the_program()
             else:
                 new_last_name = input("Enter a new last name of the reader:\n").strip()
                 reader.last_name = new_last_name
                 session.commit()
                 click.echo("The information has been updated.")
         updating_reader_info_in_reader_list()
+        click.echo("-------------------\n")
+        click.echo("-------------------\n")
+        click.echo("-------Returning to main page------\n")
+        click.echo("-------------------\n")
+        click.echo("-------------------\n")
+        time.sleep(4)
+        starting_the_program()
     elif(option == "9"):
         def deleting_a_reader():
             name = input("Enter first name of the reader to be deleted:\n")
@@ -154,11 +226,25 @@ def starting_the_program():
             session.commit()
             click.echo("Reader has been deleted.")
         deleting_a_reader()
+        click.echo("-------------------\n")
+        click.echo("-------------------\n")
+        click.echo("-------Returning to main page------\n")
+        click.echo("-------------------\n")
+        click.echo("-------------------\n")
+        time.sleep(4)
+        starting_the_program()
     elif(option == "10"):
         def listing_all_recommendations():
             recommendations = session.query(Recommendations.title, Recommendations.author, Recommendations.description).all()
             click.echo(recommendations)
         listing_all_recommendations()
+        click.echo("-------------------\n")
+        click.echo("-------------------\n")
+        click.echo("-------Returning to main page------\n")
+        click.echo("-------------------\n")
+        click.echo("-------------------\n")
+        time.sleep(4)
+        starting_the_program()
     elif(option == "11"):
         def list_info_of_a_recommendation():
             book_name = input("Enter the title of the recommended book to be found:\n")
@@ -168,6 +254,13 @@ def starting_the_program():
             else:
                 click.echo(f"No book with the title '{recom_book.title}' was found.")
         list_info_of_a_recommendation()
+        click.echo("-------------------\n")
+        click.echo("-------------------\n")
+        click.echo("-------Returning to main page------\n")
+        click.echo("-------------------\n")
+        click.echo("-------------------\n")
+        time.sleep(4)
+        starting_the_program()
     elif(option == "12"):
         def adding_new_recom_book_to_recommended_list():
             name = input("Enter the title of the recommended book to be added:\n")
@@ -177,18 +270,39 @@ def starting_the_program():
             session.add(recom_book)
             session.commit()
         adding_new_recom_book_to_recommended_list()
+        click.echo("-------------------\n")
+        click.echo("-------------------\n")
+        click.echo("-------Returning to main page------\n")
+        click.echo("-------------------\n")
+        click.echo("-------------------\n")
+        time.sleep(4)
+        starting_the_program()
     elif(option == "13"):
         def updating_book_info_in_recommended_list():
-            name = input("Enter the title of the recommended book to be added:\n")
+            name = input("Enter the title of the recommended book to be updated:\n")
             book = session.query(Recommendations).filter(Recommendations.title == name).first()
             if book is None:
                 click.echo("No such book.")
+                click.echo("-------------------\n")
+                click.echo("-------------------\n")
+                click.echo("-------Returning to main page------\n")
+                click.echo("-------------------\n")
+                click.echo("-------------------\n")
+                time.sleep(4)
+                starting_the_program()
             else:
                 new_description = input("Enter a new description of this book:\n").strip()
                 book.description = new_description
                 session.commit()
                 click.echo("The information has been updated in recommendations.")
         updating_book_info_in_recommended_list()
+        click.echo("-------------------\n")
+        click.echo("-------------------\n")
+        click.echo("-------Returning to main page------\n")
+        click.echo("-------------------\n")
+        click.echo("-------------------\n")
+        time.sleep(4)
+        starting_the_program()
     elif(option == "14"):
         def deleting_a_book_from_the_recommended_list():
             name = input("Enter the title of the recommended book to be deleted:\n")
@@ -197,6 +311,13 @@ def starting_the_program():
             session.commit()
             click.echo("Book deleted from recommendations.")
         deleting_a_book_from_the_recommended_list()
+        click.echo("-------------------\n")
+        click.echo("-------------------\n")
+        click.echo("-------Returning to main page------\n")
+        click.echo("-------------------\n")
+        click.echo("-------------------\n")
+        time.sleep(4)
+        starting_the_program()
     else:
         click.echo("Please enter a valid option.\n")
         starting_the_program()

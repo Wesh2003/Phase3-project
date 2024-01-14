@@ -14,6 +14,7 @@ if __name__ == '__main__':
 
     session.query(Library).delete()
     session.query(Recommendations).delete()
+    session.query(Reader).delete()
 
     fake = Faker()
 
@@ -43,7 +44,7 @@ if __name__ == '__main__':
     # -----------------------------------------------------
     genderss = ['male', 'female']
     readers = []
-    for i in range(20):
+    for i in range(10):
         reader = Reader(
             first_name=fake.unique.name(),
             last_name=fake.unique.name(),
@@ -60,7 +61,7 @@ if __name__ == '__main__':
     recommendationss = []
     recom_names = ['Spy kids', 'Nimona', 'Monkey King',
         'Extraction', 'Insidious', 'Murder Mystery', 'Rick and Morty']
-    for i in range(20):
+    for i in range(10):
         recommendation = Recommendations(
             title=random.choice(recom_names),
             author=fake.unique.name(),
